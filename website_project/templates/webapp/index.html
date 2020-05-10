@@ -2,25 +2,4 @@
 {% load static %}
 
 <link rel="stylesheet" href="{% static "css/styles.css" %}">
-<h1>Hi Welcome to My Django Revision</h1>
-{{ insert_me }}
-
-<h2>Here are your access records</h2>
-<div class="djangtwo">
-  {% if access_records %}
-  <table border="1px soild black">
-    <thead>
-      <th>Site Name</th>
-      <th>Date Accessed</th>
-    </thead>
-    {% for acc in access_records %}
-    <tr>
-      <td>{{ acc.name }}</td>
-      <td>{{ acc.date }}</td>
-    </tr>
-    {% endfor %}
-  </table>
-  {% else %}
-  <p>No access records found!</p>
-  {% endif %}
-</div>
+<h1>Go to /formpage to fill out form</h1>
