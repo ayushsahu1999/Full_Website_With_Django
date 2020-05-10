@@ -28,6 +28,13 @@ def accrec(request):
     return render(request, 'webapp/access_records.html', context=date_dict)
 
 def users(request):
-    first_names = User.objects.order_by('first_name')
-    name_dict = {'names': first_names}
-    return render(request, 'webapp/users.html', context=name_dict)
+    form = forms.NewUser()
+
+    if request.method == 'POST':
+        form = forms.NewUser(request.POST)
+        if form.is_valid():
+            form.save(commit = True)
+            return index(request)
+        else:
+            print ("Error form invalid")
+    return render(request, 'webapp/users.html', {'form': form})                       

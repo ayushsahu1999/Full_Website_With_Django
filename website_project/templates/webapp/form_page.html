@@ -13,6 +13,9 @@
   </head>
   <body>
     <div class="container">
+      <a href="{% url 'index' %}"></a>
+    </div>
+    <div class="container">
       <form method="POST">
         {{ form.as_p }}
         {% csrf_token %}

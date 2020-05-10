@@ -1,6 +1,6 @@
 from django import forms
 from django.core import validators
-
+from webapp.models import User
 
 class FormName(forms.Form):
 
@@ -16,3 +16,9 @@ class FormName(forms.Form):
         vmail = all_clean_data['verify_email']
         if email != vmail:
             raise forms.ValidationError("Make sure email matches!")
+
+
+class NewUser(forms.ModelForm):
+    class Meta:
+        model = User
+        fields = '__all__'

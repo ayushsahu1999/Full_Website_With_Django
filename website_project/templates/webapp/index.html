@@ -13,8 +13,9 @@
   <body>
     <div class="container">
       <div class="jumbotron">
-        <h1>Go to /formpage to fill out form</h1>
-        <h1>Go to /users to signup</h1>
+        <a href="{% url 'webapp:form_name' %}"><h1 class="first">Go to webapp/formpage to fill out form</h1></a>
+        <a href="{% url 'webapp:users' %}"><h1>Go to webapp/users to signup</h1></a>
+        <h1><a href="{% url 'admin:index' %}">Go to Admin page</a></h1>
       </div>
     </div>
 
