@@ -1,6 +1,6 @@
 from django.shortcuts import render
 from django.http import HttpResponse
-from webapp.models import Topic, Webpage, AccessRecord
+from webapp.models import Topic, Webpage, AccessRecord, User
 from . import forms
 
 # Create your views here.
@@ -26,3 +26,8 @@ def accrec(request):
     date_dict = {'access_records': webpages_list,
                  'insert_me': 'Hello my name is Ayush Sahu'}
     return render(request, 'webapp/access_records.html', context=date_dict)
+
+def users(request):
+    first_names = User.objects.order_by('first_name')
+    name_dict = {'names': first_names}
+    return render(request, 'webapp/users.html', context=name_dict)

@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+{% load static %}
+
+<link rel="stylesheet" href="{% static "css/styles.css" %}">
+
+<h2>Here are your access records</h2>
+<div class="showusers">
+  {% if names %}
+  <table border="1px soild black">
+    <thead>
+      <th>First Name</th>
+      <th>last Name</th>
+      <th>Email ID</th>
+    </thead>
+    {% for name in names %}
+    <tr>
+      <td>{{ name.first_name }}</td>
+      <td>{{ name.last_name }}</td>
+      <td>{{ name.email }}</td>
+    </tr>
+    {% endfor %}
+  </table>
+  {% else %}
+  <p>No names found!</p>
+  {% endif %}
+</div>
