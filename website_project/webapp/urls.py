@@ -10,5 +10,6 @@ urlpatterns = [
     url(r'^$', views.index, name='index'),
     url(r'^accessrecords/', views.accrec, name='accrec'),
     url(r'^register/', views.form_name_view, name='register'),
-    url(r'^users/', views.users, name='users')
+    url(r'^users/', views.users, name='users'),
+    url(r'^login/$', views.user_login, name='user_login')
 ]
