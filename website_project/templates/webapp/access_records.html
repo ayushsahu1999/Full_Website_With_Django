@@ -1,7 +1,8 @@
-<!DOCTYPE html>
-{% load static %}
 
-<link rel="stylesheet" href="{% static "css/styles.css" %}">
+{% extends "webapp/base.html" %}
+
+{% block body_block %}
+
 <h1>Hi Welcome to My Django Revision</h1>
 {{ insert_me }}
 
@@ -24,3 +25,4 @@
   <p>No access records found!</p>
   {% endif %}
 </div>
+{% endblock %}

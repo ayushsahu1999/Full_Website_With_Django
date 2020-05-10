@@ -5,7 +5,8 @@ from . import forms
 
 # Create your views here.
 def index(request):
-    return render(request, 'webapp/index.html')
+    dict = {'text': 'I am testing hello function'}
+    return render(request, 'webapp/index.html', context=dict)
 
 def form_name_view(request):
     form = forms.FormName
@@ -37,4 +38,4 @@ def users(request):
             return index(request)
         else:
             print ("Error form invalid")
-    return render(request, 'webapp/users.html', {'form': form})                       
+    return render(request, 'webapp/users.html', {'form': form})

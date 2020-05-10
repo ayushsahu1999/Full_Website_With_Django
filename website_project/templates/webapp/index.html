@@ -1,23 +1,12 @@
-<!DOCTYPE html>
-{% load static %}
 
-<html lang="en" dir="ltr">
-  <head>
-    <meta charset="utf-8">
-    <title>Index</title>
-    <link rel="stylesheet" href="{% static "css/styles.css" %}">
-    <!-- Latest compiled and minified CSS -->
-    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css"
-    integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
-  </head>
-  <body>
-    <div class="container">
-      <div class="jumbotron">
-        <a href="{% url 'webapp:form_name' %}"><h1 class="first">Go to webapp/formpage to fill out form</h1></a>
-        <a href="{% url 'webapp:users' %}"><h1>Go to webapp/users to signup</h1></a>
-        <h1><a href="{% url 'admin:index' %}">Go to Admin page</a></h1>
-      </div>
-    </div>
+{% extends "webapp/base.html" %}
 
-  </body>
-</html>
+{% block body_block %}
+<div class="jumbotron">
+  <h1><a href="{% url 'webapp:form_name' %}">Go to webapp/formpage to fill out form</a></h1>
+  <h1><a href="{% url 'webapp:users' %}">Go to webapp/users to signup</a></h1>
+  <h1><a href="{% url 'admin:index' %}">Go to Admin page</a></h1>
+
+  <!-- {{ text|cut:'hello' }} -->
+</div>
+{% endblock %}
