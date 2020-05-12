@@ -1,0 +1,14 @@
+{% extends 'webapp/base.html' %}
+
+
+{% block body_block %}
+
+<h1>Delete {{ user.first_name }}?</h1>
+
+<form method="POST">
+  {% csrf_token %}
+  <input type="submit" class="btn btn-large btn-danger" value="Delete">
+  <a href="{% url 'webapp:userdetail' pk=user.pk %}">Cancel</a>
+</form>
+
+{% endblock %}

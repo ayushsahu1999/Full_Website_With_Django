@@ -1,5 +1,8 @@
 from django.db import models
 from django.contrib.auth.models import User as Us
+from django.urls import reverse
+
+
 
 # Create your models here.
 class Topic(models.Model):
@@ -17,7 +20,7 @@ class Webpage(models.Model):
         return self.name
 
 class AccessRecord(models.Model):
-    name = models.ForeignKey(Webpage, on_delete = models.CASCADE)
+    name = models.ForeignKey(Webpage, related_name = 'webpages', on_delete = models.CASCADE)
     date = models.DateField()
 
     def __str__(self):
@@ -30,6 +33,11 @@ class User(models.Model):
 
     def __str__(self):
         return self.first_name
+
+    def get_absolute_url(self):
+        return reverse("webapp:index")
+
+
 
 class UserProfileInfo(models.Model):
     user = models.OneToOneField(Us, on_delete = models.CASCADE)

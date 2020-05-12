@@ -3,13 +3,29 @@
 
 {% block body_block %}
 
-<h1>Please Sign Up here!</h1>
+<h1>
+  {% if not form.instance.pk %}
+  Create School
+  {% else %}
+  Update School
+  {% endif %}
+</h1>
 </div>
 <div class="container">
 <form method="POST">
 {{ form.as_p }}
 {% csrf_token %}
-<input type="submit" name="submit" value="Sign Up">
+{% if not form.instance.pk %}
+<input type="submit" class="btn btn-primary" name="submit" value="Sign Up">
+{% else %}
+<input type="submit" class="btn btn-primary" name="submit" value="Update">
+{% endif %}
 </form>
+</div>
+<br>
+<br>
+<div class="container">
+  <a class="btn btn-warning" href="{% url 'webapp:userlist' %}">List of Users</a>
+
 
 {% endblock %}

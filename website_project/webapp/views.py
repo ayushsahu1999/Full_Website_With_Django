@@ -1,9 +1,11 @@
 from django.shortcuts import render
+from django.views.generic import (TemplateView, DetailView, ListView,
+                                  CreateView, UpdateView, DeleteView)
 from django.http import HttpResponse, HttpResponseRedirect
 from webapp.models import Topic, Webpage, AccessRecord, User
 from . import forms
 from webapp.forms import UserForm, UserProfileInfoForm
-from django.urls import reverse
+from django.urls import reverse, reverse_lazy
 from django.contrib.auth.decorators import login_required
 from django.contrib.auth import authenticate, login, logout
 
@@ -39,23 +41,59 @@ def form_name_view(request):
                                                      'registered': registered})
 
 
-def accrec(request):
-    webpages_list = AccessRecord.objects.order_by('date')
-    date_dict = {'access_records': webpages_list,
-                 'insert_me': 'Hello my name is Ayush Sahu'}
-    return render(request, 'webapp/access_records.html', context=date_dict)
+class AccRecListView(ListView):
+    context_object_name = 'access_records'
+    model = AccessRecord
+    template_name = 'webapp/access_records.html'
 
-def users(request):
-    form = forms.NewUser()
 
-    if request.method == 'POST':
-        form = forms.NewUser(request.POST)
-        if form.is_valid():
-            form.save(commit = True)
-            return index(request)
-        else:
-            print ("Error form invalid")
-    return render(request, 'webapp/users.html', {'form': form})
+
+# def accrec(request):
+#     webpages_list = AccessRecord.objects.order_by('date')
+#     date_dict = {'access_records': webpages_list,
+#                  'insert_me': 'Hello my name is Ayush Sahu'}
+#     return render(request, 'webapp/access_records.html', context=date_dict)
+
+class UsersCreateView(CreateView):
+    fields = ('first_name', 'last_name', 'email')
+    model = User
+    template_name = 'webapp/users.html'
+
+class UsersListView(ListView):
+    model = User
+    template_name = 'webapp/user_list.html'
+
+class UsersDetailView(DetailView):
+    model = User
+    template_name = 'webapp/user_detail.html'
+
+class UsersUpdateView(UpdateView):
+    fields = ('first_name', 'last_name', 'email')
+    model = User
+    template_name = 'webapp/users.html'
+
+class UsersDeleteView(DeleteView):
+    model = User
+    success_url = reverse_lazy("webapp:userlist")
+
+
+# class UsersDetailView(DetailView):
+#     # context_object_name = 'user_detail'
+#     model = User
+#     # template_name = 'basic_app/users.html'
+
+
+# def users(request):
+#     form = forms.NewUser()
+#
+#     if request.method == 'POST':
+#         form = forms.NewUser(request.POST)
+#         if form.is_valid():
+#             form.save(commit = True)
+#             return index(request)
+#         else:
+#             print ("Error form invalid")
+#     return render(request, 'webapp/users.html', {'form': form})
 
 def user_login(request):
     if request.method == 'POST':

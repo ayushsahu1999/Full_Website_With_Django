@@ -1,0 +1,15 @@
+{% extends "webapp/base.html" %}
+
+{% block body_block %}
+
+<div class="jumbotron">
+  <h1>Welcome to the list of all Users</h1>
+  <h2>Here are all the users:</h2>
+  <ol>
+    {% for user in user_list %}
+    <h2><li><a href="{{ user.id }}">{{ user.first_name }}</a></li></h2>
+    {% endfor %}
+  </ol>
+</div>
+
+{% endblock %}
