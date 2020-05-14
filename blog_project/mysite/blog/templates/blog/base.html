@@ -35,7 +35,7 @@
         <a class="nav-item nav-link" href="{% url 'logout' %}">Logout</a>
         <a href="#">Welcome: {{ user.username }}</a>
         {% else %}
-        <a class="nav-item nav-link" href="{% url 'login' %}"><span class="glyphycon glyphicon-user"></span></a>
+        <a class="nav-item nav-link" href="{% url 'login' %}"><span class="glyphicon glyphicon-user"></span></a>
         {% endif %}
 
       </div>

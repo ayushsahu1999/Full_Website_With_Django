@@ -24,14 +24,14 @@ class PostDetailView(DetailView):
 
 
 class CreatePostView(LoginRequiredMixin, CreateView):
-    login_url = '/login/'
+    login_url = '/login/'   # in case a person is not logged in, where should it go.
     redirect_field_name = 'blog/post_detail.html'
     form_class = PostForm
     model = Post
 
 
 class PostUpdateView(LoginRequiredMixin, UpdateView):
-    login_url = '/login/'
+    login_url = '/login/'   # in case a person is not logged in, where should it go.
     redirect_field_name = 'blog/post_detail.html'
     form_class = PostForm
     model = Post
