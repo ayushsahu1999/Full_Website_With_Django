@@ -1,7 +1,7 @@
 from django.contrib import admin
 from django.urls import path
 from django.conf.urls import url, include
-from basic_app import views
+from blog import views
 
 urlpatterns = [
     url(r'^$', views.PostListView.as_view(), name='post_list'),
